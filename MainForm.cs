@@ -35,8 +35,10 @@ namespace Address_Book
         {
             if (addressListBox.SelectedItems.Count == 0)
             {
+                editContactButton.Enabled = false;
                 return;
             }
+            editContactButton.Enabled = true;
             string selectedContactName = addressListBox.SelectedItem.ToString();
             Contact? selectedContact = contacts.FindContactInList(selectedContactName);
             if (selectedContact != null)
@@ -49,6 +51,11 @@ namespace Address_Book
             {
                 System.Diagnostics.Debug.WriteLine("Contact is null");
             }
+        }
+
+        private void editContactButton_Click(object sender, EventArgs e)
+        {
+            Contact selectedContact = contacts.FindContactInList(addressListBox.SelectedItem.ToString());
         }
     }
 

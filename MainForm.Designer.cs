@@ -34,6 +34,7 @@
             this.previewTelephoneLabel = new System.Windows.Forms.Label();
             this.previewAddressLabel = new System.Windows.Forms.Label();
             this.previewNameLabel = new System.Windows.Forms.Label();
+            this.editContactButton = new System.Windows.Forms.Button();
             this.previewGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             this.addressListBox.ItemHeight = 15;
             this.addressListBox.Location = new System.Drawing.Point(12, 12);
             this.addressListBox.Name = "addressListBox";
-            this.addressListBox.Size = new System.Drawing.Size(198, 424);
+            this.addressListBox.Size = new System.Drawing.Size(198, 154);
             this.addressListBox.TabIndex = 2;
             this.addressListBox.SelectedIndexChanged += new System.EventHandler(this.addressListBox_SelectedIndexChanged);
             this.addressListBox.DoubleClick += new System.EventHandler(this.addressListBox_DoubleClick);
@@ -98,15 +99,26 @@
             this.previewNameLabel.TabIndex = 0;
             this.previewNameLabel.Text = "Name:";
             // 
-            // Form1
+            // editContactButton
+            // 
+            this.editContactButton.Location = new System.Drawing.Point(216, 42);
+            this.editContactButton.Name = "editContactButton";
+            this.editContactButton.Size = new System.Drawing.Size(119, 44);
+            this.editContactButton.TabIndex = 4;
+            this.editContactButton.Text = "Edit Selected Contact";
+            this.editContactButton.UseVisualStyleBackColor = true;
+            this.editContactButton.Click += new System.EventHandler(this.editContactButton_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(631, 204);
+            this.Controls.Add(this.editContactButton);
             this.Controls.Add(this.previewGroupBox);
             this.Controls.Add(this.addressListBox);
             this.Controls.Add(this.addContactButton);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Address Book";
             this.previewGroupBox.ResumeLayout(false);
             this.previewGroupBox.PerformLayout();
@@ -121,5 +133,6 @@
         private Label previewNameLabel;
         private Label previewAddressLabel;
         private Label previewTelephoneLabel;
+        private Button editContactButton;
     }
 }
