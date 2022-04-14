@@ -2,7 +2,7 @@ namespace Address_Book
 {
     public partial class MainForm : Form
     {
-        ContactList contacts = new ContactList();
+        public ContactList contacts = new ContactList();
         public MainForm()
         {
             InitializeComponent();
@@ -56,6 +56,15 @@ namespace Address_Book
         private void editContactButton_Click(object sender, EventArgs e)
         {
             Contact selectedContact = contacts.FindContactInList(addressListBox.SelectedItem.ToString());
+            using (var form = new EditContactForm(selectedContact))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK && form.hasChanged)
+                {
+                    contacts.EditContact(form.originalContact.name, form.editedContact);
+                    contacts.CreateVisuals(addressListBox);
+                }
+            }
         }
     }
 
@@ -110,6 +119,15 @@ namespace Address_Book
             foreach (var contact in listOfContacts)
             {
                 listBox.Items.Add(contact.name);
+            }
+        }
+
+        public void EditContact(string name, Contact newContact)
+        {
+            Contact? contact = FindContactInList(name);
+            if (contact != null)
+            {
+                contact = newContact;
             }
         }
     }
