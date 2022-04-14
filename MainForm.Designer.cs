@@ -1,6 +1,6 @@
 ﻿namespace Address_Book
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -102,12 +102,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 461);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.previewGroupBox);
             this.Controls.Add(this.addressListBox);
             this.Controls.Add(this.addContactButton);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Address Book";
             this.previewGroupBox.ResumeLayout(false);
             this.previewGroupBox.PerformLayout();
             this.ResumeLayout(false);

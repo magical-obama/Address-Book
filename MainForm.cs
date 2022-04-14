@@ -1,9 +1,9 @@
 namespace Address_Book
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         ContactList contacts = new ContactList();
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             contacts.Add(new Contact("Maximilian Schwärzler", "Hier", "+436704025301"));
