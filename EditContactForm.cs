@@ -12,7 +12,7 @@ namespace Address_Book
 {
     public partial class EditContactForm : Form
     {
-        public EditContactForm()
+        public EditContactForm(Contact contactToEdit)
         {
             InitializeComponent();
         }
