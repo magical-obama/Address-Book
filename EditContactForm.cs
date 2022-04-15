@@ -12,20 +12,20 @@ namespace Address_Book
 {
     public partial class EditContactForm : Form
     {
-        public Contact contactToEdit;
+        Contact contactToEdit;
         public bool hasChanged { get; set; }
-        public Contact? updatedContact { get; set; }
-        public string originalId { get; set; }
-        public EditContactForm(Contact contactToEdit)
+
+        public ContactList contacts { get; set; }
+
+        public EditContactForm(Contact contactToEdit, ContactList originalContacts)
         {
             InitializeComponent();
             this.contactToEdit = contactToEdit;
-            this.originalId = contactToEdit.Id;
-
+            this.contacts = originalContacts;
             this.Text = "Edit Contact \"" + contactToEdit.Name + "\"";
             nameTextBox.Text = contactToEdit.Name;
-            addressTextBox.Text = contactToEdit.Address;
-            telephoneTextBox.Text = contactToEdit.TelephoneNumber;
+            addressTextBox.Text = contactToEdit.address;
+            telephoneTextBox.Text = contactToEdit.telephoneNumber;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -36,17 +36,25 @@ namespace Address_Book
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (nameTextBox.Text == contactToEdit.Name && addressTextBox.Text == contactToEdit.Address && telephoneTextBox.Text == contactToEdit.TelephoneNumber)
+            Contact updatedContact = new Contact(nameTextBox.Text, addressTextBox.Text, telephoneTextBox.Text);
+            if (updatedContact == contactToEdit)
             {
-                this.DialogResult = DialogResult.OK;
                 this.hasChanged = false;
+                System.Diagnostics.Debug.WriteLine("No changes made");
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                this.DialogResult = DialogResult.OK;
                 this.hasChanged = true;
-                this.updatedContact = new Contact(nameTextBox.Text, addressTextBox.Text, telephoneTextBox.Text);
+                System.Diagnostics.Debug.WriteLine("Contact has changed");
+                //contacts.FindContactInList(contactToEdit.Name);
+                //contacts.RemoveContact(contactToEdit);
+                //contacts.AddContact(updatedContact);
+                System.Diagnostics.Debug.WriteLine(contacts.EditContact(contactToEdit.Name, updatedContact));
+                System.Diagnostics.Debug.WriteLine("Contacts has been edited");
+                System.Diagnostics.Debug.WriteLine(contacts);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
