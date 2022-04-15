@@ -39,18 +39,18 @@ namespace Address_Book
             Contact? contact = this.Find(id);
             if (contact != null)
             {
-                return this.Remove(contact);
                 UpdateChanges();
+                return this.Remove(contact);
             }
             return false;
         }
 
-        public bool UpdateContact(string id, string name, string address, string telephoneNumber)
+        public bool UpdateContact(string id, Contact newContact)
         {
-            Contact? contact = this.Find(id);
-            if (contact != null)
+            Contact? oldContact = this.Find(id);
+            if (oldContact != null)
             {
-                contact.Update(name, address, telephoneNumber);
+                oldContact.Update(newContact.Name, newContact.Address, newContact.TelephoneNumber);
                 System.Diagnostics.Debug.WriteLine("Contact updated");
                 UpdateChanges();
                 return true;
