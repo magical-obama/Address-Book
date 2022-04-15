@@ -91,7 +91,23 @@ namespace Address_Book
                     var updatedContact = form.updatedContact;
                     contacts.UpdateContact(form.originalId, updatedContact);
                     UpdatePreviewLables();
-                    addressListBox.DataSource = contacts;
+                    //addressListBox.DataSource = contacts;
+                }
+            }
+        }
+
+        private void CreateNewContact()
+        {
+            Contact newContact = new Contact("", "", "");
+            using (var form = new EditContactForm(newContact))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK && form.hasChanged)
+                {
+                    Contact? updatedContact = form.updatedContact;
+                    contacts.Add(updatedContact);
+                    UpdatePreviewLables();
+                    //addressListBox.DataSource = contacts;
                 }
             }
         }
@@ -116,6 +132,11 @@ namespace Address_Book
             {
                 System.Diagnostics.Debug.WriteLine("Contact is null");
             }
+        }
+
+        private void addContactButton_Click(object sender, EventArgs e)
+        {
+            CreateNewContact();
         }
     }
 }

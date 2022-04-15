@@ -46,6 +46,7 @@
             this.addContactButton.TabIndex = 1;
             this.addContactButton.Text = "Add New Contact";
             this.addContactButton.UseVisualStyleBackColor = true;
+            this.addContactButton.Click += new System.EventHandler(this.addContactButton_Click);
             // 
             // addressListBox
             // 
