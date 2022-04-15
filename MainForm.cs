@@ -12,6 +12,7 @@ namespace Address_Book
 
             addressListBox.DataSource = contacts;
             addressListBox.DisplayMember = "Name";
+            addressListBox.ValueMember = "Id";
 
             // contacts.UpdateVisuals(addressListBox);
             if (addressListBox.Items.Count > 0)
@@ -99,28 +100,7 @@ namespace Address_Book
         }
     }
 
-    public class Contact
-    {
-        public string Name { get; set; }
-        public string address;
-        public string telephoneNumber;
-
-        public Contact(string name, string address, string telephoneNumber)
-        {
-            this.Name = name;
-            this.address = address;
-            this.telephoneNumber = telephoneNumber;
-        }
-
-        public override string ToString()
-        {
-            System.Text.StringBuilder output = new System.Text.StringBuilder();
-            output.AppendLine("Name: " + this.Name);
-            output.AppendLine("Address: " + this.address);
-            output.AppendLine("Telephone: " + this.telephoneNumber);
-            return output.ToString();
-        }
-    }
+    
 
     public class ContactList : List<Contact>
     {
