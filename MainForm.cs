@@ -48,7 +48,8 @@ namespace Address_Book
             {
                 System.Diagnostics.Debug.WriteLine(selectedContact);
                 UpdatePreviewLables(selectedContact);
-            } else
+            }
+            else
             {
                 System.Diagnostics.Debug.WriteLine("Contact is null");
             }
@@ -88,7 +89,7 @@ namespace Address_Book
                 if (result == DialogResult.OK && form.hasChanged)
                 {
                     var updatedContact = form.updatedContact;
-                    contacts.UpdateContact(form.originalId, updatedContact.Name, updatedContact.Address, updatedContact.TelephoneNumber);
+                    contacts.UpdateContact(form.originalId, updatedContact);
                     UpdatePreviewLables();
                     addressListBox.DataSource = contacts;
                 }
