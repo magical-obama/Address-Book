@@ -10,7 +10,7 @@ namespace Address_Book
             contacts.Add(new Contact("Konstantin Schwärzler", "Auch Hier", "+0123456789"));
             contacts.Add(new Contact("Mami", "Zuhause", "+436641967422"));
 
-            contacts.CreateVisuals(addressListBox);
+            contacts.UpdateVisuals(addressListBox);
             if (addressListBox.Items.Count > 0)
             {
                 addressListBox.SelectedIndex = 0;
@@ -61,7 +61,7 @@ namespace Address_Book
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK && form.hasChanged)
                 {
-                    contacts.CreateVisuals(addressListBox);
+                    contacts.UpdateVisuals(addressListBox);
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace Address_Book
             return contactList.Find(x => x.name == nameOfContact);
         }
 
-        public void CreateVisuals(ListBox listBox)
+        public void UpdateVisuals(ListBox listBox)
         {
             listBox.Items.Clear();
             foreach (var contact in this)
@@ -112,7 +112,7 @@ namespace Address_Book
             }
         }
 
-        public static void CreateVisuals(List<Address_Book.Contact> listOfContacts, ListBox listBox)
+        public static void UpdateVisuals(List<Address_Book.Contact> listOfContacts, ListBox listBox)
         {
             listBox.Items.Clear();
             foreach (var contact in listOfContacts)
