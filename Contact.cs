@@ -10,26 +10,33 @@ namespace Address_Book
     {
         public string Name { get; set; }
         public string Id { get; }
-
-        public string address;
-        public string telephoneNumber;
+        public string Address { get; set; }
+        public string TelephoneNumber { get; set; }
 
         public Contact(string name, string address, string telephoneNumber)
         {
             this.Name = name;
-            this.address = address;
-            this.telephoneNumber = telephoneNumber;
+            this.Address = address;
+            this.TelephoneNumber = telephoneNumber;
             this.Id = Guid.NewGuid().ToString();
+        }
+
+        public Contact Update(string name, string address, string telephoneNumber)
+        {
+            this.Name = name;
+            this.Address = address;
+            this.TelephoneNumber = telephoneNumber;
+            return this;
         }
 
         public override string ToString()
         {
-            System.Text.StringBuilder output = new System.Text.StringBuilder();
-            output.AppendLine("Id: " + this.Id);
-            output.AppendLine("Name: " + this.Name);
-            output.AppendLine("Address: " + this.address);
-            output.AppendLine("Telephone: " + this.telephoneNumber);
-            return output.ToString();
+            var sb = new StringBuilder();
+            sb.AppendLine("Id: " + this.Id);
+            sb.AppendLine("Name: " + this.Name);
+            sb.AppendLine("Address: " + this.Address);
+            sb.AppendLine("Telephone: " + this.TelephoneNumber);
+            return sb.ToString();
         }
     }
 }
