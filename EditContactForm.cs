@@ -12,14 +12,17 @@ namespace Address_Book
 {
     public partial class EditContactForm : Form
     {
-        public Contact originalContact { get; set; }
-        public Contact editedContact { get; set; }
+        Contact originalContact;
+        Contact editedContact;
         public bool hasChanged { get; set; }
+
+        ContactList contacts;
         
-        public EditContactForm(Contact contactToEdit)
+        public EditContactForm(Contact contactToEdit, ref ContactList contacts)
         {
             InitializeComponent();
             originalContact = contactToEdit;
+            this.contacts = contacts;
             this.Text = "Edit Contact \"" + contactToEdit.name + "\"";
             nameTextBox.Text = contactToEdit.name;
             addressTextBox.Text = contactToEdit.address;
@@ -38,13 +41,17 @@ namespace Address_Book
             if (updatedContact == originalContact)
             {
                 this.hasChanged = false;
+                System.Diagnostics.Debug.WriteLine("No changes made");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
                 this.hasChanged = true;
-                this.editedContact = updatedContact;
+                System.Diagnostics.Debug.WriteLine("Contact has changed");
+                contacts.FindContactInList(originalContact.name);
+                contacts.RemoveContact(originalContact.name);
+                contacts.AddContact(updatedContact);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

@@ -56,12 +56,11 @@ namespace Address_Book
         private void editContactButton_Click(object sender, EventArgs e)
         {
             Contact selectedContact = contacts.FindContactInList(addressListBox.SelectedItem.ToString());
-            using (var form = new EditContactForm(selectedContact))
+            using (var form = new EditContactForm(selectedContact, ref contacts))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK && form.hasChanged)
                 {
-                    contacts.EditContact(form.originalContact.name, form.editedContact);
                     contacts.CreateVisuals(addressListBox);
                 }
             }
@@ -128,6 +127,20 @@ namespace Address_Book
             if (contact != null)
             {
                 contact = newContact;
+            }
+        }
+
+        public void AddContact(Contact contact)
+        {
+            this.Add(contact);
+        }
+
+        public void RemoveContact(string name)
+        {
+            Contact? contact = FindContactInList(name);
+            if (contact != null)
+            {
+                this.Remove(contact);
             }
         }
     }

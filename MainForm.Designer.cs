@@ -56,6 +56,7 @@
             this.addressListBox.Location = new System.Drawing.Point(12, 12);
             this.addressListBox.Name = "addressListBox";
             this.addressListBox.Size = new System.Drawing.Size(198, 154);
+            this.addressListBox.Sorted = true;
             this.addressListBox.TabIndex = 2;
             this.addressListBox.SelectedIndexChanged += new System.EventHandler(this.addressListBox_SelectedIndexChanged);
             this.addressListBox.DoubleClick += new System.EventHandler(this.addressListBox_DoubleClick);
