@@ -4,6 +4,7 @@
 !include "LogicLib.nsh"
 !include "WinVer.nsh"
 !include "x64.nsh"
+!include "FileFunc.nsh"
 
 ;-------------------------------------------------------------------------------
 ; Constants
@@ -12,13 +13,14 @@
 !define COPYRIGHT "Copyright © 2022 Maximilian Schwärzler"
 !define PRODUCT_VERSION "1.0.0.0"
 !define SETUP_VERSION 1.0.0.0
+!define ARP "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
 ;-------------------------------------------------------------------------------
 ; Attributes
 Name "Address Book"
 OutFile "install.exe"
 InstallDir "$LOCALAPPDATA\Address Book"
-;InstallDirRegKey HKCU "Software\My Company\My Application" ""
+InstallDirRegKey HKCU "Software\Max\Address Book" ""
 RequestExecutionLevel user ; user|highest|admin
 
 ;-------------------------------------------------------------------------------
@@ -42,7 +44,7 @@ VIAddVersionKey "FileVersion" "${SETUP_VERSION}"
 ; Installer Pages
 !insertmacro MUI_PAGE_WELCOME
 ;!insertmacro MUI_PAGE_LICENSE "LICENCE"
-!insertmacro MUI_PAGE_COMPONENTS
+;!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
@@ -60,19 +62,25 @@ VIAddVersionKey "FileVersion" "${SETUP_VERSION}"
 
 ;-------------------------------------------------------------------------------
 ; Installer Sections
-Section "My Application" MyApp
+Section "Install"
 	SetOutPath $INSTDIR
 	File /r "bin\Release\net6.0-windows\publish\win-x64\"
 	CreateShortCut "$SMPROGRAMS\Address Book.lnk" "$INSTDIR\Address Book.exe"
 	WriteUninstaller "$INSTDIR\Uninstall.exe"
+	WriteRegStr HKLM "${ARP}" "DisplayName" "Address Book"
+	WriteRegStr HKLM "${ARP}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+
+	${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
+ 	IntFmt $0 "0x%08X" $0
+ 	WriteRegDWORD HKLM "${ARP}" "EstimatedSize" "$0"
 SectionEnd
 
 ;-------------------------------------------------------------------------------
 ; Uninstaller Sections
 Section "Uninstall"
-	Delete "$INSTDIR\Uninstall.exe"
 	Delete "$SMPROGRAMS\Address Book.lnk"
 	RMDir /r "$INSTDIR"
-	;DeleteRegKey /ifempty HKCU "Software\Modern UI Test"
+	DeleteRegKey HKLM "${ARP}"
+	Delete "$INSTDIR\Uninstall.exe"
 SectionEnd
 
