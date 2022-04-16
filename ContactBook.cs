@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Text;
 using System.Runtime.CompilerServices;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Address_Book
 {
+    [XmlRoot("Contacts")]
     public class ContactBook : BindingList<Contact>, INotifyPropertyChanged
     {
         public ContactBook() { }
