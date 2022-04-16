@@ -103,54 +103,60 @@
             // previewNameLabel
             // 
             this.previewNameLabel.AutoSize = true;
+            this.previewNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewNameLabel.Location = new System.Drawing.Point(3, 0);
             this.previewNameLabel.Name = "previewNameLabel";
-            this.previewNameLabel.Size = new System.Drawing.Size(42, 15);
+            this.previewNameLabel.Size = new System.Drawing.Size(67, 15);
             this.previewNameLabel.TabIndex = 0;
             this.previewNameLabel.Text = "Name:";
             // 
             // previewAddressLabel
             // 
             this.previewAddressLabel.AutoSize = true;
+            this.previewAddressLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewAddressLabel.Location = new System.Drawing.Point(3, 15);
             this.previewAddressLabel.Name = "previewAddressLabel";
-            this.previewAddressLabel.Size = new System.Drawing.Size(52, 15);
+            this.previewAddressLabel.Size = new System.Drawing.Size(67, 15);
             this.previewAddressLabel.TabIndex = 1;
             this.previewAddressLabel.Text = "Address:";
             // 
             // previewTelephoneLabel
             // 
             this.previewTelephoneLabel.AutoSize = true;
+            this.previewTelephoneLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewTelephoneLabel.Location = new System.Drawing.Point(3, 30);
             this.previewTelephoneLabel.Name = "previewTelephoneLabel";
-            this.previewTelephoneLabel.Size = new System.Drawing.Size(64, 15);
+            this.previewTelephoneLabel.Size = new System.Drawing.Size(67, 18);
             this.previewTelephoneLabel.TabIndex = 2;
             this.previewTelephoneLabel.Text = "Telephone:";
             // 
             // nameLabel
             // 
-            this.nameLabel.AutoSize = true;
+            this.nameLabel.AutoEllipsis = true;
+            this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nameLabel.Location = new System.Drawing.Point(76, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(39, 15);
+            this.nameLabel.Size = new System.Drawing.Size(198, 15);
             this.nameLabel.TabIndex = 3;
             this.nameLabel.Text = "Name";
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
+            this.addressLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addressLabel.Location = new System.Drawing.Point(76, 15);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(49, 15);
+            this.addressLabel.Size = new System.Drawing.Size(198, 15);
             this.addressLabel.TabIndex = 4;
             this.addressLabel.Text = "Address";
             // 
             // telephoneLabel
             // 
             this.telephoneLabel.AutoSize = true;
+            this.telephoneLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.telephoneLabel.Location = new System.Drawing.Point(76, 30);
             this.telephoneLabel.Name = "telephoneLabel";
-            this.telephoneLabel.Size = new System.Drawing.Size(61, 15);
+            this.telephoneLabel.Size = new System.Drawing.Size(198, 18);
             this.telephoneLabel.TabIndex = 5;
             this.telephoneLabel.Text = "Telephone";
             // 
@@ -178,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 217);
+            this.ClientSize = new System.Drawing.Size(636, 217);
             this.Controls.Add(this.deleteContactButton);
             this.Controls.Add(this.editContactButton);
             this.Controls.Add(this.previewGroupBox);
