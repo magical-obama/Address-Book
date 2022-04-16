@@ -35,6 +35,7 @@
             this.previewAddressLabel = new System.Windows.Forms.Label();
             this.previewNameLabel = new System.Windows.Forms.Label();
             this.editContactButton = new System.Windows.Forms.Button();
+            this.deleteContactButton = new System.Windows.Forms.Button();
             this.previewGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,17 +107,28 @@
             // 
             this.editContactButton.Location = new System.Drawing.Point(216, 42);
             this.editContactButton.Name = "editContactButton";
-            this.editContactButton.Size = new System.Drawing.Size(119, 44);
+            this.editContactButton.Size = new System.Drawing.Size(119, 40);
             this.editContactButton.TabIndex = 4;
             this.editContactButton.Text = "Edit Selected Contact";
             this.editContactButton.UseVisualStyleBackColor = true;
             this.editContactButton.Click += new System.EventHandler(this.editContactButton_Click);
+            // 
+            // deleteContactButton
+            // 
+            this.deleteContactButton.Location = new System.Drawing.Point(216, 88);
+            this.deleteContactButton.Name = "deleteContactButton";
+            this.deleteContactButton.Size = new System.Drawing.Size(119, 40);
+            this.deleteContactButton.TabIndex = 5;
+            this.deleteContactButton.Text = "Delete Selected Contact";
+            this.deleteContactButton.UseVisualStyleBackColor = true;
+            this.deleteContactButton.Click += new System.EventHandler(this.deleteContactButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 204);
+            this.Controls.Add(this.deleteContactButton);
             this.Controls.Add(this.editContactButton);
             this.Controls.Add(this.previewGroupBox);
             this.Controls.Add(this.addressListBox);
@@ -137,5 +149,6 @@
         private Label previewAddressLabel;
         private Label previewTelephoneLabel;
         private Button editContactButton;
+        private Button deleteContactButton;
     }
 }

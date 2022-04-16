@@ -39,9 +39,11 @@ namespace Address_Book
             if (addressListBox.SelectedItems.Count == 0)
             {
                 editContactButton.Enabled = false;
+                deleteContactButton.Enabled = false;
                 return;
             }
             editContactButton.Enabled = true;
+            deleteContactButton.Enabled = true;
             System.Diagnostics.Debug.WriteLine(addressListBox.SelectedValue);
             Contact? selectedContact = FindCurrentlySelectedContact();
             if (selectedContact != null)
@@ -137,6 +139,27 @@ namespace Address_Book
         private void addContactButton_Click(object sender, EventArgs e)
         {
             CreateNewContact();
+        }
+
+        private void deleteContactButton_Click(object sender, EventArgs e)
+        {
+            DeleteContact();
+        }
+
+        private void DeleteContact()
+        {
+            if (addressListBox.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            Contact? selectedContact = FindCurrentlySelectedContact();
+            DialogResult result = MessageBox.Show("Are you sure you want to delete " + selectedContact.Name + "?", "Delete Contact", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                contacts.Remove(selectedContact.Id);
+                UpdatePreviewLables();
+                //addressListBox.DataSource = contacts;
+            }
         }
     }
 }
