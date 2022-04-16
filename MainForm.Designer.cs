@@ -192,6 +192,7 @@
             this.Controls.Add(this.addContactButton);
             this.Name = "MainForm";
             this.Text = "Address Book";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.previewGroupBox.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

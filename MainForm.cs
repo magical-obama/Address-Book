@@ -6,9 +6,7 @@ namespace Address_Book
         public MainForm()
         {
             InitializeComponent();
-            contacts.Add(new Contact("Maximilian Schwärzler", "Hier", "+436704025301"));
-            contacts.Add(new Contact("Konstantin Schwärzler", "Auch Hier", "+0123456789"));
-            contacts.Add(new Contact("Mami", "Zuhause", "+436641967422"));
+            contacts = XmlManager.ReadContactBook("contacts.xml");
 
             addressListBox.DisplayMember = "Name";
             addressListBox.ValueMember = "Id";
@@ -79,6 +77,11 @@ namespace Address_Book
             EditContact();
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            XmlManager.SaveContactBook(contacts, "contacts.xml");
+        }
+
         private void EditContact()
         {
             Contact? selectedContact = FindCurrentlySelectedContact();
@@ -101,7 +104,7 @@ namespace Address_Book
 
         private void CreateNewContact()
         {
-            Contact newContact = new Contact("", "", "");
+            Contact newContact = new Contact();
             using (var form = new EditContactForm(newContact))
             {
                 var result = form.ShowDialog();
