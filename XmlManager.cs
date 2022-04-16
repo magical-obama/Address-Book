@@ -14,6 +14,7 @@ namespace Address_Book
         public static void SaveContactBook(ContactBook contacts, string filename)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ContactBook));
+            EnsureDirectoryExists(filename);
             TextWriter writer = new StreamWriter(filename);
             serializer.Serialize(writer, contacts);
             writer.Close();
@@ -32,9 +33,14 @@ namespace Address_Book
             {
                 fileStream = new FileStream(filename, FileMode.Open);
             }
-            catch(FileNotFoundException)
+            catch (Exception ex)
             {
-                return new ContactBook();
+                if (ex is FileNotFoundException || ex is DirectoryNotFoundException)
+                {
+                    return new ContactBook();
+                }
+
+                throw;
             }
 
             ContactBook contacts = serializer.Deserialize(fileStream) as ContactBook;
@@ -61,6 +67,15 @@ namespace Address_Book
                 System.Xml.XmlAttribute attr = e.Attr;
                 Console.WriteLine("Unknown attribute " +
                 attr.Name + "='" + attr.Value + "'");
+            }
+        }
+
+        private static void EnsureDirectoryExists(string filePath)
+        {
+            FileInfo fi = new FileInfo(filePath);
+            if (!fi.Directory.Exists)
+            {
+                System.IO.Directory.CreateDirectory(fi.DirectoryName);
             }
         }
     }

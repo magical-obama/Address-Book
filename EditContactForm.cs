@@ -42,7 +42,10 @@
             {
                 this.DialogResult = DialogResult.OK;
                 this.hasChanged = true;
-                this.updatedContact = new Contact(nameTextBox.Text, addressTextBox.Text, telephoneTextBox.Text);
+                this.updatedContact = new Contact();
+                updatedContact.Name = nameTextBox.Text;
+                updatedContact.Address = addressTextBox.Text;
+                updatedContact.TelephoneNumber = telephoneTextBox.Text;
                 this.Close();
             }
         }

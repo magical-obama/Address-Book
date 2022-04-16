@@ -2,11 +2,13 @@ namespace Address_Book
 {
     public partial class MainForm : Form
     {
+        const string contactsSavePath = "data/addressbook.xml";
+
         public ContactBook contacts = new ContactBook();
         public MainForm()
         {
             InitializeComponent();
-            contacts = XmlManager.ReadContactBook("contacts.xml");
+            contacts = XmlManager.ReadContactBook(contactsSavePath);
 
             addressListBox.DisplayMember = "Name";
             addressListBox.ValueMember = "Id";
@@ -79,7 +81,7 @@ namespace Address_Book
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            XmlManager.SaveContactBook(contacts, "contacts.xml");
+            XmlManager.SaveContactBook(contacts, contactsSavePath);
         }
 
         private void EditContact()
