@@ -1,21 +1,18 @@
 ﻿using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Address_Book
 {
+    [XmlRoot]
     public class Contact
     {
+        [XmlAttribute]
+        public string Id { get; set; }
         public string Name { get; set; }
-        public string Id { get; }
         public string Address { get; set; }
         public string TelephoneNumber { get; set; }
-
-        public Contact(string name, string address, string telephoneNumber)
-        {
-            this.Name = name;
-            this.Address = address;
-            this.TelephoneNumber = telephoneNumber;
-            this.Id = Guid.NewGuid().ToString();
-        }
 
         public Contact Update(string name, string address, string telephoneNumber)
         {
