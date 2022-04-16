@@ -39,15 +39,17 @@ namespace Address_Book
             if (addressListBox.SelectedItems.Count == 0)
             {
                 editContactButton.Enabled = false;
+                deleteContactButton.Enabled = false;
                 return;
             }
             editContactButton.Enabled = true;
+            deleteContactButton.Enabled = true;
             System.Diagnostics.Debug.WriteLine(addressListBox.SelectedValue);
             Contact? selectedContact = FindCurrentlySelectedContact();
             if (selectedContact != null)
             {
                 System.Diagnostics.Debug.WriteLine(selectedContact);
-                UpdatePreviewLables(selectedContact);
+                UpdatePreviewLables();
             }
             else
             {
@@ -60,15 +62,16 @@ namespace Address_Book
             Contact? selectedContact = FindCurrentlySelectedContact();
             if (selectedContact != null)
             {
-                UpdatePreviewLables(selectedContact);
+                nameLabel.Text = selectedContact.Name;
+                addressLabel.Text = selectedContact.Address;
+                telephoneLabel.Text = selectedContact.TelephoneNumber;
             }
-        }
-
-        private void UpdatePreviewLables(Contact contact)
-        {
-            previewNameLabel.Text = "Name: " + contact.Name;
-            previewAddressLabel.Text = "Address: " + contact.Address;
-            previewTelephoneLabel.Text = "Telephone: " + contact.TelephoneNumber;
+            else if (addressListBox.Items.Count == 0)
+            {
+                nameLabel.Text = "";
+                addressLabel.Text = "";
+                telephoneLabel.Text = "";
+            }
         }
 
         private void editContactButton_Click(object sender, EventArgs e)
@@ -123,10 +126,7 @@ namespace Address_Book
             Contact? selectedContact = addressListBox.SelectedItem as Contact;
             if (selectedContact != null)
             {
-                System.Diagnostics.Debug.WriteLine(selectedContact);
-                previewNameLabel.Text = "Name: " + selectedContact.Name;
-                previewAddressLabel.Text = "Address: " + selectedContact.Address;
-                previewTelephoneLabel.Text = "Telephone: " + selectedContact.TelephoneNumber;
+                UpdatePreviewLables();
             }
             else
             {
@@ -137,6 +137,26 @@ namespace Address_Book
         private void addContactButton_Click(object sender, EventArgs e)
         {
             CreateNewContact();
+        }
+
+        private void deleteContactButton_Click(object sender, EventArgs e)
+        {
+            DeleteContact();
+        }
+
+        private void DeleteContact()
+        {
+            if (addressListBox.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            Contact? selectedContact = FindCurrentlySelectedContact();
+            DialogResult result = MessageBox.Show("Are you sure you want to delete " + selectedContact.Name + "?", "Delete Contact", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                contacts.Remove(selectedContact.Id);
+                UpdatePreviewLables();
+            }
         }
     }
 }

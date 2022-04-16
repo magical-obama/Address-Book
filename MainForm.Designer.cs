@@ -31,11 +31,17 @@
             this.addContactButton = new System.Windows.Forms.Button();
             this.addressListBox = new System.Windows.Forms.ListBox();
             this.previewGroupBox = new System.Windows.Forms.GroupBox();
-            this.previewTelephoneLabel = new System.Windows.Forms.Label();
-            this.previewAddressLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.previewNameLabel = new System.Windows.Forms.Label();
+            this.previewAddressLabel = new System.Windows.Forms.Label();
+            this.previewTelephoneLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.addressLabel = new System.Windows.Forms.Label();
+            this.telephoneLabel = new System.Windows.Forms.Label();
             this.editContactButton = new System.Windows.Forms.Button();
+            this.deleteContactButton = new System.Windows.Forms.Button();
             this.previewGroupBox.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // addContactButton
@@ -56,7 +62,7 @@
             this.addressListBox.ItemHeight = 15;
             this.addressListBox.Location = new System.Drawing.Point(12, 12);
             this.addressListBox.Name = "addressListBox";
-            this.addressListBox.Size = new System.Drawing.Size(198, 154);
+            this.addressListBox.Size = new System.Drawing.Size(198, 184);
             this.addressListBox.Sorted = true;
             this.addressListBox.TabIndex = 2;
             this.addressListBox.SelectedIndexChanged += new System.EventHandler(this.addressListBox_SelectedIndexChanged);
@@ -65,58 +71,115 @@
             // 
             // previewGroupBox
             // 
-            this.previewGroupBox.Controls.Add(this.previewTelephoneLabel);
-            this.previewGroupBox.Controls.Add(this.previewAddressLabel);
-            this.previewGroupBox.Controls.Add(this.previewNameLabel);
+            this.previewGroupBox.Controls.Add(this.tableLayoutPanel1);
             this.previewGroupBox.Location = new System.Drawing.Point(341, 12);
             this.previewGroupBox.Name = "previewGroupBox";
-            this.previewGroupBox.Size = new System.Drawing.Size(200, 74);
+            this.previewGroupBox.Size = new System.Drawing.Size(283, 70);
             this.previewGroupBox.TabIndex = 3;
             this.previewGroupBox.TabStop = false;
             this.previewGroupBox.Text = "Preview";
             // 
-            // previewTelephoneLabel
+            // tableLayoutPanel1
             // 
-            this.previewTelephoneLabel.AutoSize = true;
-            this.previewTelephoneLabel.Location = new System.Drawing.Point(6, 49);
-            this.previewTelephoneLabel.Name = "previewTelephoneLabel";
-            this.previewTelephoneLabel.Size = new System.Drawing.Size(64, 15);
-            this.previewTelephoneLabel.TabIndex = 2;
-            this.previewTelephoneLabel.Text = "Telephone:";
-            // 
-            // previewAddressLabel
-            // 
-            this.previewAddressLabel.AutoSize = true;
-            this.previewAddressLabel.Location = new System.Drawing.Point(6, 34);
-            this.previewAddressLabel.Name = "previewAddressLabel";
-            this.previewAddressLabel.Size = new System.Drawing.Size(52, 15);
-            this.previewAddressLabel.TabIndex = 1;
-            this.previewAddressLabel.Text = "Address:";
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.35379F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.64621F));
+            this.tableLayoutPanel1.Controls.Add(this.previewNameLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.previewAddressLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.previewTelephoneLabel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.nameLabel, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.addressLabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.telephoneLabel, 1, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(277, 48);
+            this.tableLayoutPanel1.TabIndex = 6;
             // 
             // previewNameLabel
             // 
             this.previewNameLabel.AutoSize = true;
-            this.previewNameLabel.Location = new System.Drawing.Point(6, 19);
+            this.previewNameLabel.Location = new System.Drawing.Point(3, 0);
             this.previewNameLabel.Name = "previewNameLabel";
             this.previewNameLabel.Size = new System.Drawing.Size(42, 15);
             this.previewNameLabel.TabIndex = 0;
             this.previewNameLabel.Text = "Name:";
             // 
+            // previewAddressLabel
+            // 
+            this.previewAddressLabel.AutoSize = true;
+            this.previewAddressLabel.Location = new System.Drawing.Point(3, 15);
+            this.previewAddressLabel.Name = "previewAddressLabel";
+            this.previewAddressLabel.Size = new System.Drawing.Size(52, 15);
+            this.previewAddressLabel.TabIndex = 1;
+            this.previewAddressLabel.Text = "Address:";
+            // 
+            // previewTelephoneLabel
+            // 
+            this.previewTelephoneLabel.AutoSize = true;
+            this.previewTelephoneLabel.Location = new System.Drawing.Point(3, 30);
+            this.previewTelephoneLabel.Name = "previewTelephoneLabel";
+            this.previewTelephoneLabel.Size = new System.Drawing.Size(64, 15);
+            this.previewTelephoneLabel.TabIndex = 2;
+            this.previewTelephoneLabel.Text = "Telephone:";
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(76, 0);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(39, 15);
+            this.nameLabel.TabIndex = 3;
+            this.nameLabel.Text = "Name";
+            // 
+            // addressLabel
+            // 
+            this.addressLabel.AutoSize = true;
+            this.addressLabel.Location = new System.Drawing.Point(76, 15);
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Size = new System.Drawing.Size(49, 15);
+            this.addressLabel.TabIndex = 4;
+            this.addressLabel.Text = "Address";
+            // 
+            // telephoneLabel
+            // 
+            this.telephoneLabel.AutoSize = true;
+            this.telephoneLabel.Location = new System.Drawing.Point(76, 30);
+            this.telephoneLabel.Name = "telephoneLabel";
+            this.telephoneLabel.Size = new System.Drawing.Size(61, 15);
+            this.telephoneLabel.TabIndex = 5;
+            this.telephoneLabel.Text = "Telephone";
+            // 
             // editContactButton
             // 
             this.editContactButton.Location = new System.Drawing.Point(216, 42);
             this.editContactButton.Name = "editContactButton";
-            this.editContactButton.Size = new System.Drawing.Size(119, 44);
+            this.editContactButton.Size = new System.Drawing.Size(119, 40);
             this.editContactButton.TabIndex = 4;
             this.editContactButton.Text = "Edit Selected Contact";
             this.editContactButton.UseVisualStyleBackColor = true;
             this.editContactButton.Click += new System.EventHandler(this.editContactButton_Click);
             // 
+            // deleteContactButton
+            // 
+            this.deleteContactButton.Location = new System.Drawing.Point(216, 88);
+            this.deleteContactButton.Name = "deleteContactButton";
+            this.deleteContactButton.Size = new System.Drawing.Size(119, 40);
+            this.deleteContactButton.TabIndex = 5;
+            this.deleteContactButton.Text = "Delete Selected Contact";
+            this.deleteContactButton.UseVisualStyleBackColor = true;
+            this.deleteContactButton.Click += new System.EventHandler(this.deleteContactButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(631, 204);
+            this.ClientSize = new System.Drawing.Size(820, 217);
+            this.Controls.Add(this.deleteContactButton);
             this.Controls.Add(this.editContactButton);
             this.Controls.Add(this.previewGroupBox);
             this.Controls.Add(this.addressListBox);
@@ -124,7 +187,8 @@
             this.Name = "MainForm";
             this.Text = "Address Book";
             this.previewGroupBox.ResumeLayout(false);
-            this.previewGroupBox.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -137,5 +201,10 @@
         private Label previewAddressLabel;
         private Label previewTelephoneLabel;
         private Button editContactButton;
+        private Button deleteContactButton;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label nameLabel;
+        private Label addressLabel;
+        private Label telephoneLabel;
     }
 }
