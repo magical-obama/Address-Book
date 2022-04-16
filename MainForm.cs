@@ -49,7 +49,7 @@ namespace Address_Book
             if (selectedContact != null)
             {
                 System.Diagnostics.Debug.WriteLine(selectedContact);
-                UpdatePreviewLables(selectedContact);
+                UpdatePreviewLables();
             }
             else
             {
@@ -62,15 +62,16 @@ namespace Address_Book
             Contact? selectedContact = FindCurrentlySelectedContact();
             if (selectedContact != null)
             {
-                UpdatePreviewLables(selectedContact);
+                nameLabel.Text = selectedContact.Name;
+                addressLabel.Text = selectedContact.Address;
+                telephoneLabel.Text = selectedContact.TelephoneNumber;
             }
-        }
-
-        private void UpdatePreviewLables(Contact contact)
-        {
-            previewNameLabel.Text = "Name: " + contact.Name;
-            previewAddressLabel.Text = "Address: " + contact.Address;
-            previewTelephoneLabel.Text = "Telephone: " + contact.TelephoneNumber;
+            else if (addressListBox.Items.Count == 0)
+            {
+                nameLabel.Text = "";
+                addressLabel.Text = "";
+                telephoneLabel.Text = "";
+            }
         }
 
         private void editContactButton_Click(object sender, EventArgs e)
@@ -125,10 +126,7 @@ namespace Address_Book
             Contact? selectedContact = addressListBox.SelectedItem as Contact;
             if (selectedContact != null)
             {
-                System.Diagnostics.Debug.WriteLine(selectedContact);
-                previewNameLabel.Text = "Name: " + selectedContact.Name;
-                previewAddressLabel.Text = "Address: " + selectedContact.Address;
-                previewTelephoneLabel.Text = "Telephone: " + selectedContact.TelephoneNumber;
+                UpdatePreviewLables();
             }
             else
             {
@@ -158,7 +156,6 @@ namespace Address_Book
             {
                 contacts.Remove(selectedContact.Id);
                 UpdatePreviewLables();
-                //addressListBox.DataSource = contacts;
             }
         }
     }
