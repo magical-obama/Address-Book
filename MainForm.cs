@@ -81,7 +81,20 @@ namespace Address_Book
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            XmlManager.SaveContactBook(contacts, contactsSavePath);
+            DialogResult result = MessageBox.Show(
+                "Do you want to exit?",
+                "Exit",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information);
+
+            if (result == DialogResult.OK)
+            {
+                XmlManager.SaveContactBook(contacts, contactsSavePath);
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void EditContact()
