@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
-using System.Text;
 using System.Runtime.CompilerServices;
-using System.Xml;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace Address_Book
@@ -27,7 +26,8 @@ namespace Address_Book
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void UpdateChanges() {
+        public void UpdateChanges()
+        {
             NotifyPropertyChanged();
             this.ResetBindings();
         }
@@ -54,7 +54,6 @@ namespace Address_Book
             if (oldContact != null)
             {
                 oldContact.Update(newContact.Name, newContact.Address, newContact.TelephoneNumber);
-                System.Diagnostics.Debug.WriteLine("Contact updated");
                 UpdateChanges();
                 return true;
             }

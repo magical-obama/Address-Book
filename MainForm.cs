@@ -44,16 +44,10 @@ namespace Address_Book
             }
             editContactButton.Enabled = true;
             deleteContactButton.Enabled = true;
-            System.Diagnostics.Debug.WriteLine(addressListBox.SelectedValue);
             Contact? selectedContact = FindCurrentlySelectedContact();
             if (selectedContact != null)
             {
-                System.Diagnostics.Debug.WriteLine(selectedContact);
                 UpdatePreviewLables();
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Contact is null");
             }
         }
 
@@ -112,7 +106,6 @@ namespace Address_Book
                     var updatedContact = form.updatedContact;
                     contacts.UpdateContact(form.originalId, updatedContact);
                     UpdatePreviewLables();
-                    //addressListBox.DataSource = contacts;
                 }
             }
         }
@@ -128,7 +121,6 @@ namespace Address_Book
                     Contact? updatedContact = form.updatedContact;
                     contacts.Add(updatedContact);
                     UpdatePreviewLables();
-                    //addressListBox.DataSource = contacts;
                 }
             }
         }
@@ -145,10 +137,6 @@ namespace Address_Book
             if (selectedContact != null)
             {
                 UpdatePreviewLables();
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Contact is null");
             }
         }
 
@@ -169,7 +157,11 @@ namespace Address_Book
                 return;
             }
             Contact? selectedContact = FindCurrentlySelectedContact();
-            DialogResult result = MessageBox.Show("Are you sure you want to delete " + selectedContact.Name + "?", "Delete Contact", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete " + selectedContact.Name + "?",
+                "Delete Contact", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
             if (result == DialogResult.Yes)
             {
                 contacts.Remove(selectedContact.Id);

@@ -15,7 +15,8 @@
             if (contactToEdit.Name == "")
             {
                 this.Text = "Create New Contact";
-            } else
+            }
+            else
             {
                 this.Text = "Edit Contact \"" + contactToEdit.Name + "\"";
             }
@@ -32,7 +33,10 @@
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (nameTextBox.Text == contactToEdit.Name && addressTextBox.Text == contactToEdit.Address && telephoneTextBox.Text == contactToEdit.TelephoneNumber)
+            if (
+                nameTextBox.Text == contactToEdit.Name && 
+                addressTextBox.Text == contactToEdit.Address && 
+                telephoneTextBox.Text == contactToEdit.TelephoneNumber)
             {
                 this.DialogResult = DialogResult.OK;
                 this.hasChanged = false;

@@ -10,7 +10,7 @@
 ; Constants
 !define PRODUCT_NAME "Address Book"
 !define PRODUCT_DESCRIPTION "Address Book for Windows"
-!define COPYRIGHT "Copyright © 2022 Maximilian Schwärzler"
+!define COPYRIGHT "Copyright © 2022 Maximilian Schwaerzler"
 !define PRODUCT_VERSION "1.0.0.0"
 !define SETUP_VERSION 1.0.0.0
 !define ARP "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -21,12 +21,13 @@ Name "Address Book"
 OutFile "install.exe"
 InstallDir "$LOCALAPPDATA\Address Book"
 InstallDirRegKey HKCU "Software\Max\Address Book" ""
-RequestExecutionLevel user ; user|highest|admin
+RequestExecutionLevel admin ; user|highest|admin
 
 ;-------------------------------------------------------------------------------
 ; Version Info
 VIProductVersion "${PRODUCT_VERSION}"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
+VIAddVersionKey "CompanyName" "Maximilian Schwaerzler"
 VIAddVersionKey "ProductVersion" "${PRODUCT_VERSION}"
 VIAddVersionKey "FileDescription" "${PRODUCT_DESCRIPTION}"
 VIAddVersionKey "LegalCopyright" "${COPYRIGHT}"
@@ -38,6 +39,7 @@ VIAddVersionKey "FileVersion" "${SETUP_VERSION}"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\orange.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Wizard\orange.bmp"
+!define MUI_FINISHPAGE_RUN "$INSTDIR\Address Book.exe"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 
 ;-------------------------------------------------------------------------------
