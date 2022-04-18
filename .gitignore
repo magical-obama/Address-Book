@@ -364,5 +364,3 @@ MigrationBackup/
 FodyWeavers.xsd
 
 .dccache
-installer.nsi
-installer.exe

@@ -18,7 +18,7 @@
 ;-------------------------------------------------------------------------------
 ; Attributes
 Name "Address Book"
-OutFile "install.exe"
+OutFile "Installer.exe"
 InstallDir "$LOCALAPPDATA\Address Book"
 InstallDirRegKey HKCU "Software\Max\Address Book" ""
 RequestExecutionLevel admin ; user|highest|admin
@@ -45,7 +45,7 @@ VIAddVersionKey "FileVersion" "${SETUP_VERSION}"
 ;-------------------------------------------------------------------------------
 ; Installer Pages
 !insertmacro MUI_PAGE_WELCOME
-;!insertmacro MUI_PAGE_LICENSE "LICENCE"
+!insertmacro MUI_PAGE_LICENSE "LICENSE"
 ;!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
