@@ -9,6 +9,7 @@ namespace Address_Book
         {
             InitializeComponent();
             contacts = XmlManager.ReadContactBook(contactsSavePath);
+            UpdatePreviewLables();
 
             addressListBox.DisplayMember = "Name";
             addressListBox.ValueMember = "Id";
@@ -35,6 +36,11 @@ namespace Address_Book
         }
 
         private void addressListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateListBoxAndButtons();
+        }
+
+        private void UpdateListBoxAndButtons()
         {
             if (addressListBox.SelectedItems.Count == 0)
             {
@@ -103,6 +109,7 @@ namespace Address_Book
                     var updatedContact = form.updatedContact;
                     contacts.UpdateContact(form.originalId, updatedContact);
                     UpdatePreviewLables();
+                    UpdateListBoxAndButtons();
                 }
             }
         }
@@ -119,21 +126,6 @@ namespace Address_Book
                     contacts.Add(updatedContact);
                     UpdatePreviewLables();
                 }
-            }
-        }
-
-        private void addressListBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (addressListBox.SelectedItems.Count == 0)
-            {
-                editContactButton.Enabled = false;
-                return;
-            }
-            editContactButton.Enabled = true;
-            Contact? selectedContact = addressListBox.SelectedItem as Contact;
-            if (selectedContact != null)
-            {
-                UpdatePreviewLables();
             }
         }
 

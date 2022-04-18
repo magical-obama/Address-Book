@@ -34,7 +34,7 @@ namespace Address_Book
 
         public Contact? Find(string id)
         {
-            return this.SingleOrDefault(contact => contact.Id == id);
+            return this.FirstOrDefault(contact => contact.Id == id);
         }
 
         public bool Remove(string id)

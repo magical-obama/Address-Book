@@ -66,7 +66,6 @@
             this.addressListBox.Sorted = true;
             this.addressListBox.TabIndex = 2;
             this.addressListBox.SelectedIndexChanged += new System.EventHandler(this.addressListBox_SelectedIndexChanged);
-            this.addressListBox.SelectedValueChanged += new System.EventHandler(this.addressListBox_SelectedValueChanged);
             this.addressListBox.DoubleClick += new System.EventHandler(this.addressListBox_DoubleClick);
             // 
             // previewGroupBox

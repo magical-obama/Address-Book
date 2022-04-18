@@ -8,10 +8,10 @@ namespace Address_Book
     public class Contact
     {
         [XmlAttribute]
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string TelephoneNumber { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Name { get; set; } = "";
+        public string Address { get; set; } = "";
+        public string TelephoneNumber { get; set; } = "";
 
         public Contact Update(string name, string address, string telephoneNumber)
         {

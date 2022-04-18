@@ -10,6 +10,7 @@
 ; Constants
 !define PRODUCT_NAME "Address Book"
 !define PRODUCT_DESCRIPTION "Address Book for Windows"
+!define PRODUCT_PUBLISHER "Maximilian Schwaerzler"
 !define COPYRIGHT "Copyright © 2022 Maximilian Schwaerzler"
 !define PRODUCT_VERSION "1.0.0.0"
 !define SETUP_VERSION 1.0.0.0
@@ -20,14 +21,13 @@
 Name "Address Book"
 OutFile "Installer.exe"
 InstallDir "$LOCALAPPDATA\Address Book"
-InstallDirRegKey HKCU "Software\Max\Address Book" ""
 RequestExecutionLevel admin ; user|highest|admin
 
 ;-------------------------------------------------------------------------------
 ; Version Info
 VIProductVersion "${PRODUCT_VERSION}"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
-VIAddVersionKey "CompanyName" "Maximilian Schwaerzler"
+VIAddVersionKey "CompanyName" "${PRODUCT_PUBLISHER}"
 VIAddVersionKey "ProductVersion" "${PRODUCT_VERSION}"
 VIAddVersionKey "FileDescription" "${PRODUCT_DESCRIPTION}"
 VIAddVersionKey "LegalCopyright" "${COPYRIGHT}"
@@ -69,7 +69,9 @@ Section "Install"
 	File /r "bin\Release\net6.0-windows\publish\win-x64\"
 	CreateShortCut "$SMPROGRAMS\Address Book.lnk" "$INSTDIR\Address Book.exe"
 	WriteUninstaller "$INSTDIR\Uninstall.exe"
+
 	WriteRegStr HKLM "${ARP}" "DisplayName" "Address Book"
+	WriteRegStr HKLM "${ARP}" "Publisher" "${PRODUCT_PUBLISHER}"
 	WriteRegStr HKLM "${ARP}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
 
 	${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
