@@ -12,7 +12,7 @@
             InitializeComponent();
             this.contactToEdit = contactToEdit;
             this.originalId = contactToEdit.Id;
-            if (contactToEdit.Name == "")
+            if (contactToEdit.Name == "" || contactToEdit.Name == null)
             {
                 this.Text = "Create New Contact";
             }
