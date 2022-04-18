@@ -75,19 +75,16 @@ namespace Address_Book
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "Do you want to exit?",
-                "Exit",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Information);
-
-            if (result == DialogResult.OK)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                XmlManager.SaveContactBook(contacts, contactsSavePath);
-            }
-            else
-            {
-                e.Cancel = true;
+                if (MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    XmlManager.SaveContactBook(contacts, contactsSavePath);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
 
